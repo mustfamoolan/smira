@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
+
+    --color-background: #05050f;
+    --color-surface: #0d0d1f;
+    --color-surface-high: #13132a;
+    --color-border: rgba(139,92,246,0.15);
+
+    --color-primary: #8b5cf6;
+    --color-primary-light: #a78bfa;
+    --color-accent: #ec4899;
+    --color-accent-light: #f472b6;
+    --color-gold: #f59e0b;
+
+    --color-text: #f0eeff;
+    --color-text-muted: #9090b0;
+    --color-text-dim: #5a5a7a;
+}
+
+@utility glass {
+    background: rgba(13, 13, 31, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+}
+
+@utility glow-purple {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.25), 0 0 60px rgba(139, 92, 246, 0.1);
+}
+
+@utility glow-pink {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.25), 0 0 60px rgba(236, 72, 153, 0.1);
+}
+
+@utility card-hover {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+        border-color: rgba(139, 92, 246, 0.4);
+    }
+}
