@@ -6,46 +6,56 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'Syne', sans-serif;
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Playfair Display', serif;
     --font-mono: 'Space Grotesk', monospace;
 
-    --color-background: #05050f;
-    --color-surface: #0d0d1f;
-    --color-surface-high: #13132a;
-    --color-border: rgba(139,92,246,0.15);
-
-    --color-primary: #8b5cf6;
-    --color-primary-light: #a78bfa;
-    --color-accent: #ec4899;
-    --color-accent-light: #f472b6;
-    --color-gold: #f59e0b;
-
-    --color-text: #f0eeff;
-    --color-text-muted: #9090b0;
-    --color-text-dim: #5a5a7a;
+    /* Girly & Light Chic Palette */
+    --color-background: #fffafa; /* Softest rose white */
+    --color-surface: #ffffff;
+    --color-primary: #ff85a1; /* Cute soft pink */
+    --color-secondary: #fbcfe8; /* Lighter pink */
+    --color-accent: #ff4d91; 
+    --color-gold: #ffd700;
+    
+    --color-on-background: #4a1d1f; /* Dark berry text */
+    --color-on-surface: #5d2b2d;
 }
 
-@utility glass {
-    background: rgba(13, 13, 31, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(139, 92, 246, 0.18);
+@utility glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 133, 161, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(255, 133, 161, 0.1);
 }
 
-@utility glow-purple {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.25), 0 0 60px rgba(139, 92, 246, 0.1);
+@utility text-gradient {
+    background: linear-gradient(135deg, #ff85a1 0%, #ff4d91 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@utility floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
 
 @utility glow-pink {
-    box-shadow: 0 0 30px rgba(236, 72, 153, 0.25), 0 0 60px rgba(236, 72, 153, 0.1);
+    box-shadow: 0 0 25px rgba(255, 133, 161, 0.3);
 }
 
-@utility card-hover {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+@utility premium-btn {
+    background: linear-gradient(135deg, #ff85a1 0%, #ff4d91 100%);
+    color: white;
+    transition: all 0.3s ease;
     &:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
-        border-color: rgba(139, 92, 246, 0.4);
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(255, 133, 161, 0.4);
     }
 }

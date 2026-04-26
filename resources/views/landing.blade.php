@@ -1,293 +1,424 @@
 <!DOCTYPE html>
-<html class="dark" dir="rtl" lang="ar">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سميرة - مطورة برمجيات</title>
+    <title>سميرة | إبداع باللون الوردي</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     
     <!-- Scripts & Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        body {
+            font-family: 'Cairo', 'Outfit', sans-serif;
+            background-color: #fffafa;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(255, 133, 161, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(251, 207, 232, 0.15) 0%, transparent 50%);
+            color: #4a1d1f;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff85a1 0%, #ff4d91 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 133, 161, 0.1) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        .glass-nav {
+            background: rgba(255, 250, 250, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 133, 161, 0.1);
+        }
+
+        .project-card {
+            background: white;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 133, 161, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 133, 161, 0.15);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        .float-anim {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .soft-shadow {
+            box-shadow: 0 10px 30px rgba(255, 133, 161, 0.1);
         }
     </style>
 </head>
-<body class="bg-background text-on-background font-body-base">
-    <!-- Top Navigation Bar -->
-    <nav class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(225,29,72,0.1)]">
-        <div class="flex flex-row-reverse justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-            <div class="text-2xl font-bold bg-gradient-to-r from-rose-500 to-purple-500 bg-clip-text text-transparent font-display-lg">سميرة</div>
-            <div class="hidden md:flex flex-row-reverse items-center gap-8 font-sans text-sm font-medium">
-                <a class="text-rose-500 border-b-2 border-rose-500 pb-1" href="#">الرئيسية</a>
-                <a class="text-slate-400 hover:text-rose-300 transition-colors" href="#projects">المشاريع</a>
-                <a class="text-slate-400 hover:text-rose-300 transition-colors" href="#skills">المهارات</a>
-                <a class="text-slate-400 hover:text-rose-300 transition-colors" href="#journey">السيرة الذاتية</a>
-                <a class="text-slate-400 hover:text-rose-300 transition-colors" href="#contact">اتصل بي</a>
+<body class="selection:bg-primary/20">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-3xl font-display italic font-bold gradient-text tracking-tighter">سميرة</div>
+            
+            <div class="hidden md:flex gap-10 text-sm font-bold">
+                <a href="#" class="text-primary transition-colors">الرئيسية</a>
+                <a href="#projects" class="text-on-background/50 hover:text-primary transition-colors">أعمالي</a>
+                <a href="#skills" class="text-on-background/50 hover:text-primary transition-colors">مهاراتي</a>
+                <a href="#contact" class="text-on-background/50 hover:text-primary transition-colors">تواصل</a>
             </div>
-            <button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-code-label scale-95 active:scale-90 transition-transform">تواصل معي</button>
+
+            <button class="px-7 py-2.5 rounded-full bg-primary text-white shadow-lg shadow-primary/20 hover:scale-105 transition-all text-sm font-bold">
+                ابدئي الآن
+            </button>
         </div>
     </nav>
 
-    <main class="pt-24 space-y-32">
+    <main class="relative">
         <!-- Hero Section -->
-        <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8 order-2 md:order-1">
-                <div class="space-y-4">
-                    <h1 class="font-display-lg text-display-lg bg-gradient-to-l from-on-background to-rose-400 bg-clip-text text-transparent leading-tight">
-                        أهلاً، أنا سميرة - مطورة برمجيات شغوفة ببناء حلول رقمية مبتكرة.
+        <section class="min-h-screen flex items-center pt-24 overflow-hidden relative">
+            <div class="hero-glow top-0 right-[-150px]"></div>
+            <div class="hero-glow bottom-[-100px] left-[-150px]"></div>
+
+            <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center w-full">
+                <div class="space-y-10 z-10 text-center lg:text-right">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-primary/20 text-primary text-xs font-black tracking-widest uppercase soft-shadow">
+                        <span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+                        مرحباً بكِ في عالمي الوردي
+                    </div>
+                    
+                    <h1 class="text-6xl lg:text-[5.5rem] font-display font-bold leading-[1.05] text-[#3d1a1c]">
+                        أصمم <span class="gradient-text italic">بأناقة</span> <br> 
+                        وأبرمج <span class="text-primary italic">بذكاء</span>
                     </h1>
-                    <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
-                        أنا مهندسة برمجيات متخصصة في تطوير تطبيقات الويب المتكاملة (Full-Stack). أجمع بين دقة الهندسة وجمال التصميم لتقديم تجارب مستخدم استثنائية. أؤمن بأن الكود هو وسيلة لحل مشكلات حقيقية وتحسين حياة الناس.
+                    
+                    <p class="text-xl text-on-background/70 leading-relaxed max-w-xl mx-auto lg:mr-0">
+                        أنا سميرة، مطورة برمجيات أحول الأفكار إلى تجارب رقمية تنبض بالحياة والجمال. أهتم بأدق التفاصيل لنصنع معاً شيئاً مذهلاً.
                     </p>
+
+                    <div class="flex flex-wrap gap-6 justify-center lg:justify-start pt-4">
+                        <a href="#projects" class="px-10 py-4.5 rounded-2xl bg-gradient-to-r from-primary to-accent text-white font-bold shadow-xl shadow-primary/30 hover:translate-y-[-4px] transition-all flex items-center gap-3">
+                            مشاهدة أعمالي
+                            <span class="material-symbols-outlined font-bold">arrow_left_alt</span>
+                        </a>
+                        <a href="#contact" class="px-10 py-4.5 rounded-2xl bg-white border border-primary/10 hover:border-primary/30 transition-all font-bold soft-shadow">
+                            تحدثي معي
+                        </a>
+                    </div>
                 </div>
-                <div class="flex flex-wrap gap-4">
-                    <button class="bg-gradient-to-r from-primary-container to-secondary-container text-white px-8 py-4 rounded-xl font-code-label flex items-center gap-2 soft-tech-glow">
-                        <span class="material-symbols-outlined">visibility</span>
-                        عرض المشاريع
-                    </button>
-                    <button class="border border-outline text-on-background px-8 py-4 rounded-xl font-code-label flex items-center gap-2 hover:bg-white/5 transition-all">
-                        <span class="material-symbols-outlined">download</span>
-                        تحميل السيرة الذاتية
-                    </button>
-                </div>
-            </div>
-            <div class="relative order-1 md:order-2 flex justify-center">
-                <div class="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-rose-500/20 relative z-10">
-                    <img alt="Samira - Software Developer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8SMuSFjUXW4SeB_cEzsHm4OhAHZNyrXT__x6OjNRyVdgPd4ZrwslacNG9GR51NKHSwISxIZbb5X9cgfLFg2w3Uy0S_MulnPH0U5QpeK1XCy2BZjgIWY9alp2peshp8vU0iJOHYEBj5OK4ReLFIrpkFw0QkPmra92lZ7Lu5KzOBvlPLR-hLmC5-B7flEbwnED02LMjq2vb2XzffsjRjzGxcnMmgZwq5zJ_9IrzaBCxUX03azB8kiHb-tWztJQra7g2iLrexILXcLCu">
-                </div>
-                <div class="absolute inset-0 bg-rose-500/10 blur-[100px] -z-0"></div>
-                <div class="absolute -top-4 -right-4 bg-surface-container-high p-4 rounded-2xl glass-card flex items-center gap-3">
-                    <span class="material-symbols-outlined text-rose-400">code</span>
-                    <span class="text-sm font-code-label text-on-background">5+ سنوات خبرة</span>
+
+                <div class="relative flex justify-center items-center">
+                    <div class="relative w-full aspect-square max-w-lg">
+                        <!-- Floral/Abstract Decorations -->
+                        <div class="absolute -top-12 -left-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl opacity-60 float-anim"></div>
+                        <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-secondary/20 rounded-full blur-3xl opacity-60" style="animation-delay: 2s"></div>
+                        
+                        <!-- Main Image Frame -->
+                        <div class="relative z-10 w-full h-full rounded-[40px] overflow-hidden border-[12px] border-white shadow-2xl float-anim">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="سميرة" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Floating Badges -->
+                        <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl z-20 shadow-2xl border border-primary/5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined font-bold">favorite</span>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-black text-primary">+١٠٠</div>
+                                    <div class="text-[10px] font-bold text-on-background/40 uppercase tracking-widest">عميلة سعيدة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Projects - Bento Grid -->
-        <section class="max-w-7xl mx-auto px-6" id="projects">
-            <div class="text-center mb-16">
-                <h2 class="font-headline-md text-headline-md text-on-background mb-4">مشاريع مختارة</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-purple-500 mx-auto rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <!-- Large Project 1 -->
-                <div class="md:col-span-8 group glass-card rounded-3xl overflow-hidden relative soft-tech-glow">
-                    <div class="aspect-video overflow-hidden">
-                        <img alt="E-commerce Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUygZcol4ENY7HaXh9hXI6mzLZLGZvi0g3KTxbHmTLBvRHVfPffkVLUzPXHXf72UQDH71n8waI5UpHOz6I8oTS9ealqQs_FA3REwkuFWMrJSMzEwhyd172YRzyHeGlBNl9eMa6kv40i18KgZIKFdiLM42MOT0moJhrgB6Vq0bfZOkHFJ_mEqrvuxnj20CCd41NEWf2RBzK-Pc-eT4JAIDKB39aV5VEXb3z45jX9sJcXCU8WOZlp4yUJd9ZFJy9Ji7-pvIFbwX6FPoe">
-                    </div>
-                    <div class="p-8 space-y-4">
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-rose-500/10 text-rose-400 text-xs rounded-full border border-rose-500/20 font-code-label">React</span>
-                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20 font-code-label">Node.js</span>
-                            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20 font-code-label">PostgreSQL</span>
+        <section id="projects" class="py-40 relative">
+            <!-- Decorative Elements -->
+            <div class="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center space-y-4 mb-24">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-4">معرض الإبداع</div>
+                    <h2 class="text-5xl md:text-6xl font-display font-bold text-[#3d1a1c]">أعمال <span class="gradient-text italic underline decoration-primary/20 underline-offset-8">تنبض</span> بالجمال</h2>
+                    <p class="text-on-background/50 max-w-lg mx-auto">مجموعة مختارة من المشاريع التي تجمع بين دقة التنفيذ ورقّي التصميم.</p>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:grid-rows-3">
+                    
+                    <!-- Project 1: Featured Large -->
+                    <div class="lg:col-span-2 lg:row-span-2 group relative overflow-hidden rounded-[3rem] bg-white border border-primary/10 hover:border-primary/30 transition-all duration-700 soft-shadow">
+                        <div class="aspect-[4/5] lg:aspect-auto h-full relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#3d1a1c]/90 via-[#3d1a1c]/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                            
+                            <div class="absolute inset-0 p-10 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="flex gap-2 mb-4 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                                    <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-bold">موقع إلكتروني</span>
+                                    <span class="px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold">الأكثر تميزاً</span>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white mb-2">متجر الأوركيد للزهور</h3>
+                                <p class="text-white/70 text-sm max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">أول منصة عربية تدمج بين الذكاء الاصطناعي وتنسيق الزهور الطبيعية.</p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-on-background">منصة تجارة إلكترونية متطورة</h3>
-                        <p class="text-on-surface-variant leading-relaxed">حل متكامل للتجارة الإلكترونية مع نظام دفع آمن، لوحة تحكم متقدمة، وتتبع مباشر للشحنات.</p>
-                        <a class="inline-flex items-center gap-2 text-rose-400 font-medium hover:underline" href="#">مشاهدة التفاصيل <span class="material-symbols-outlined">arrow_back</span></a>
                     </div>
-                </div>
-                <!-- Small Project 1 -->
-                <div class="md:col-span-4 glass-card rounded-3xl overflow-hidden soft-tech-glow flex flex-col">
-                    <div class="h-48 overflow-hidden">
-                        <img alt="Task Management App" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOK-fSCP1OhnBGTXVSWx-VP6dWFgZUDZK7E8renSLFlNrqjpEddeVp0W6I3ClyvlTptlfAPEYHpTfhNq2L3DEw3XEcrJAUwFzKY9wh2gG5P_zgVhutFepXu3E1a7_CzxZMWC9UHYWfjx-bBvF0CKak45iRfj17JQ-j8DBq4jKAtAZOmaOeg1m-PZYQZMQejwi1jLJR8v7oTFzCOVuFCuhuc4gAS4YP692vFIAvN_TgAOZtZY-mLs5LopCVDDzR8asUsL9L5ARKESoF">
+
+                    <!-- Project 2 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1512428559083-a401c338917e?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-primary uppercase mb-2 tracking-widest">UI/UX</div>
+                            <h3 class="text-xl font-bold">تطبيق "جمالكِ"</h3>
+                        </div>
                     </div>
-                    <div class="p-6 space-y-3 flex-grow">
-                        <span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs rounded-full font-code-label">Flutter</span>
-                        <h3 class="text-xl font-bold text-on-background">تطبيق إدارة المهام</h3>
-                        <p class="text-sm text-on-surface-variant">تطبيق جوال يركز على الإنتاجية مع مزامنة سحابية وإشعارات ذكية.</p>
+
+                    <!-- Project 3 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1493421416290-99a87242ad2d?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-secondary uppercase mb-2 tracking-widest">تطوير خاص</div>
+                            <h3 class="text-xl font-bold">منصة المدربات</h3>
+                        </div>
                     </div>
-                </div>
-                <!-- Small Project 2 -->
-                <div class="md:col-span-4 glass-card rounded-3xl overflow-hidden soft-tech-glow flex flex-col">
-                    <div class="h-48 overflow-hidden">
-                        <img alt="Data Analysis Tool" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlinCpYXA3DhAMTVkxA7Ql-37yAVpcKzaV7005e5QeJROeQx6NwR2NyHOIVV3I9jXeJ2UGzgN8izKT_Q6GPfaY8p1f38WzolCC_QxZvDL5OH0lt8hKahZVvJA0CKNes5_y_8_rGV4epbXUBIdNpVoCCOUiQLWUEHJR8BOQAUs9TWHOVAG3J__ND1Vf2VhRPoU1o4dNbLA2eDfDiDY-rEfwjaoUZyNjUqM1F7k-FuyFbEin-i_wuqyaKGFx3dh12_iaWG_s7nROpJhn">
+
+                    <!-- Project 4: Wide -->
+                    <div class="lg:col-span-2 group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-[2/1] relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 flex items-center">
+                                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl max-w-[200px] border border-primary/5">
+                                    <div class="text-[10px] font-bold text-primary mb-1 uppercase tracking-widest">جديد</div>
+                                    <h3 class="text-lg font-bold">تطبيق "يومياتي"</h3>
+                                    <p class="text-[10px] text-on-background/60 mt-1">تنظيم ذكي للوقت.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6 space-y-3 flex-grow">
-                        <span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs rounded-full font-code-label">Python</span>
-                        <h3 class="text-xl font-bold text-on-background">أداة تحليل البيانات</h3>
-                        <p class="text-sm text-on-surface-variant">محرك متقدم لتحويل البيانات الضخمة إلى رؤى بصرية تفاعلية.</p>
+
+                    <!-- Project 5 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1515562141207-7a18b5ce3377?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-accent uppercase mb-2 tracking-widest">E-Commerce</div>
+                            <h3 class="text-xl font-bold">مجوهرات ياقوت</h3>
+                        </div>
                     </div>
-                </div>
-                <!-- Large Project 2 -->
-                <div class="md:col-span-8 group glass-card rounded-3xl overflow-hidden relative soft-tech-glow flex flex-col md:flex-row">
-                    <div class="md:w-1/2 overflow-hidden">
-                        <img alt="AI Chatbot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf_PjF38B8x8P0Qbt1ofpLRTaLFzk1thN8ZeOtn2fCY9F1kebqVXWKI584exq-sgHC4aXMLf27JE71beQQej2FM1sJufsPstPTGYd2_WQym6z6y7wgE5_jrlKccdtaHV0-upGBBxjJKfggjnjC3Ja3ZM43vNGj8sIlWxz3C290l7MxU1qOd6O7IfE5tswEhX1BV-6WQwo-Rk_1fqV__gY8VoYGqg7m6r61rx9lb5KNSUC3dGixO-9lmumh_YpMsWxDins_OdjYNUel">
+
+                    <!-- Project 6 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-secondary uppercase mb-2 tracking-widest">App Design</div>
+                            <h3 class="text-xl font-bold">وصفات جدتي</h3>
+                        </div>
                     </div>
-                    <div class="md:w-1/2 p-8 space-y-4 flex flex-col justify-center">
-                        <span class="inline-block w-fit px-3 py-1 bg-primary-container text-on-primary-container text-xs rounded-full font-code-label">AI & NLP</span>
-                        <h3 class="text-2xl font-bold text-on-background">مساعد ذكي باللغة العربية</h3>
-                        <p class="text-on-surface-variant leading-relaxed">بوت محادثة مدعوم بالذكاء الاصطناعي لفهم اللهجات العربية وتقديم استجابات دقيقة.</p>
-                        <a class="inline-flex items-center gap-2 text-rose-400 font-medium hover:underline" href="#">مشاهدة الكود <span class="material-symbols-outlined">open_in_new</span></a>
+
+                    <!-- Project 7 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-primary uppercase mb-2 tracking-widest">Fitness</div>
+                            <h3 class="text-xl font-bold">منصة "لياقة"</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 8 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-accent uppercase mb-2 tracking-widest">Reading</div>
+                            <h3 class="text-xl font-bold">مكتبة "قراءة"</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 9 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-secondary uppercase mb-2 tracking-widest">Handmade</div>
+                            <h3 class="text-xl font-bold">متجر "شموع"</h3>
+                        </div>
+                    </div>
+
+                    <!-- Project 10 -->
+                    <div class="group relative overflow-hidden rounded-[2.5rem] bg-white border border-primary/10 soft-shadow">
+                        <div class="aspect-square relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-primary uppercase mb-2 tracking-widest">Travel</div>
+                            <h3 class="text-xl font-bold">تطبيق "رحلتي"</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section class="bg-surface-container py-24" id="skills">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="font-headline-md text-headline-md text-on-background mb-4">المهارات والتقنيات</h2>
-                    <p class="text-on-surface-variant">أدواتي التي أستخدمها لتحويل الأفكار إلى واقع رقمي</p>
+        <section id="skills" class="py-40 bg-white/60 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center space-y-4 mb-24">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-4">قوتي التقنية</div>
+                    <h2 class="text-5xl md:text-6xl font-display font-bold text-[#3d1a1c]">مهاراتي <span class="gradient-text italic">والأدوات</span></h2>
+                    <p class="text-on-background/50 max-w-lg mx-auto">أستخدم أحدث التقنيات لبناء حلول برمجية متكاملة وقابلة للتوسع.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <!-- Frontend -->
-                    <div class="p-8 rounded-3xl border border-rose-500/10 bg-slate-900/40 text-center space-y-6">
-                        <div class="w-16 h-16 bg-rose-500/10 rounded-2xl flex items-center justify-center mx-auto text-rose-400">
-                            <span class="material-symbols-outlined text-3xl">terminal</span>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Web Development -->
+                    <div class="glass-panel p-10 rounded-[3rem] border-primary/10 space-y-8 hover:translate-y-[-10px] transition-all duration-500 shadow-xl shadow-primary/5">
+                        <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-3xl font-bold">language</span>
                         </div>
-                        <h3 class="font-bold text-xl text-on-background">Frontend</h3>
-                        <ul class="space-y-3 text-on-surface-variant font-code-label">
-                            <li>React / Next.js</li>
-                            <li>Tailwind CSS</li>
-                            <li>TypeScript</li>
-                            <li>Framer Motion</li>
-                        </ul>
-                    </div>
-                    <!-- Backend -->
-                    <div class="p-8 rounded-3xl border border-purple-500/10 bg-slate-900/40 text-center space-y-6">
-                        <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto text-purple-400">
-                            <span class="material-symbols-outlined text-3xl">database</span>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-bold">تطوير الويب</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Laravel (PHP)
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> HTML5 / CSS3 / JS
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Tailwind CSS
+                                </li>
+                            </ul>
                         </div>
-                        <h3 class="font-bold text-xl text-on-background">Backend</h3>
-                        <ul class="space-y-3 text-on-surface-variant font-code-label">
-                            <li>Node.js / Express</li>
-                            <li>Python / Django</li>
-                            <li>PostgreSQL / MongoDB</li>
-                            <li>REST & GraphQL</li>
-                        </ul>
                     </div>
-                    <!-- Tools -->
-                    <div class="p-8 rounded-3xl border border-rose-500/10 bg-slate-900/40 text-center space-y-6">
-                        <div class="w-16 h-16 bg-rose-500/10 rounded-2xl flex items-center justify-center mx-auto text-rose-400">
-                            <span class="material-symbols-outlined text-3xl">build</span>
+
+                    <!-- Mobile Development -->
+                    <div class="glass-panel p-10 rounded-[3rem] border-secondary/10 space-y-8 hover:translate-y-[-10px] transition-all duration-500 shadow-xl shadow-secondary/5">
+                        <div class="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-3xl font-bold">smartphone</span>
                         </div>
-                        <h3 class="font-bold text-xl text-on-background">Tools</h3>
-                        <ul class="space-y-3 text-on-surface-variant font-code-label">
-                            <li>Git / GitHub</li>
-                            <li>Docker / Kubernetes</li>
-                            <li>AWS / Vercel</li>
-                            <li>Jest / Cypress</li>
-                        </ul>
-                    </div>
-                    <!-- UI/UX -->
-                    <div class="p-8 rounded-3xl border border-purple-500/10 bg-slate-900/40 text-center space-y-6">
-                        <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto text-purple-400">
-                            <span class="material-symbols-outlined text-3xl">draw</span>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-bold">تطوير الموبايل</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Flutter (Dart)
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Firebase Integration
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Cross-platform Apps
+                                </li>
+                            </ul>
                         </div>
-                        <h3 class="font-bold text-xl text-on-background">UI/UX Design</h3>
-                        <ul class="space-y-3 text-on-surface-variant font-code-label">
-                            <li>Figma</li>
-                            <li>Adobe XD</li>
-                            <li>Responsive Design</li>
-                            <li>Design Systems</li>
-                        </ul>
                     </div>
+
+                    <!-- Desktop & Windows -->
+                    <div class="glass-panel p-10 rounded-[3rem] border-accent/10 space-y-8 hover:translate-y-[-10px] transition-all duration-500 shadow-xl shadow-accent/5">
+                        <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                            <span class="material-symbols-outlined text-3xl font-bold">desktop_windows</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-bold">أنظمة ويندوز</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> C# .NET Desktop
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Electron JS
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Python Scripting
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & Infrastructure -->
+                    <div class="glass-panel p-10 rounded-[3rem] border-primary/10 space-y-8 hover:translate-y-[-10px] transition-all duration-500 shadow-xl shadow-primary/5">
+                        <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-3xl font-bold">cloud_done</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-bold">السيرفرات والبيانات</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> MySQL / Databases
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Docker Containers
+                                </li>
+                                <li class="flex items-center gap-3 text-sm font-semibold text-on-background/70">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Shared / VPS / Cloud
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Career Journey (Timeline) -->
-        <section class="max-w-4xl mx-auto px-6" id="journey">
-            <div class="text-center mb-16">
-                <h2 class="font-headline-md text-headline-md text-on-background mb-4">مسيرتي المهنية</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-purple-500 mx-auto rounded-full"></div>
-            </div>
-            <div class="relative border-r-2 border-rose-500/20 pr-8 space-y-12">
-                <!-- 2022-Present -->
-                <div class="relative">
-                    <div class="absolute -right-[41px] top-0 w-5 h-5 bg-rose-500 rounded-full border-4 border-background shadow-[0_0_15px_rgba(225,29,72,0.5)]"></div>
-                    <div class="space-y-2">
-                        <span class="font-code-label text-rose-400">٢٠٢٢ - الآن</span>
-                        <h3 class="text-xl font-bold text-on-background">قائدة فريق تقني (Tech Lead) - شركة نخلة للحلول</h3>
-                        <p class="text-on-surface-variant">قيادة فريق من ٨ مطورين لبناء منصات حكومية ذكية، الإشراف على بنية النظام الكلية، وتطوير معايير جودة الكود.</p>
+        <!-- CTA Section -->
+        <section id="contact" class="py-40">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-[3.5rem] p-16 md:p-24 text-center space-y-10 relative overflow-hidden border-2 border-white shadow-2xl">
+                    <div class="space-y-4">
+                        <h2 class="text-5xl md:text-6xl font-display font-bold text-[#3d1a1c]">لنصنع شيئاً <span class="gradient-text italic">ساحراً</span></h2>
+                        <p class="text-on-background/70 text-xl font-medium">
+                            أنا هنا لمساعدتكِ في تحقيق رؤيتكِ الرقمية بأفضل صورة ممكنة.
+                        </p>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <a href="mailto:hello@samira.com" class="inline-block px-14 py-5 rounded-full bg-primary text-white font-black text-xl shadow-2xl shadow-primary/40 hover:scale-110 transition-transform active:scale-95">
+                            ابدئي مشروعكِ الآن
+                        </a>
                     </div>
                 </div>
-                <!-- 2020-2022 -->
-                <div class="relative">
-                    <div class="absolute -right-[41px] top-0 w-5 h-5 bg-purple-500 rounded-full border-4 border-background"></div>
-                    <div class="space-y-2">
-                        <span class="font-code-label text-purple-400">٢٠٢٠ - ٢٠٢٢</span>
-                        <h3 class="text-xl font-bold text-on-background">مطورة أولى (Senior Developer) - تيك بغداد</h3>
-                        <p class="text-on-surface-variant">تطوير تطبيقات جوال متكاملة وتوجيه المطورين المبتدئين. تحسين أداء التطبيقات بنسبة ٤٠٪ من خلال إعادة هيكلة الكود.</p>
-                    </div>
-                </div>
-                <!-- 2018-2020 -->
-                <div class="relative">
-                    <div class="absolute -right-[41px] top-0 w-5 h-5 bg-rose-500 rounded-full border-4 border-background"></div>
-                    <div class="space-y-2">
-                        <span class="font-code-label text-rose-400">٢٠١٨ - ٢٠٢٠</span>
-                        <h3 class="text-xl font-bold text-on-background">مطورة جونيور (Junior Developer) - ستارت أب إبداع</h3>
-                        <p class="text-on-surface-variant">بداية الرحلة في عالم البرمجة، التركيز على تطوير واجهات المواقع باستخدام React وتعلم أسس تطوير الواجهات الخلفية.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Logos / Partners -->
-        <section class="max-w-7xl mx-auto px-6 py-12 border-y border-white/5 overflow-hidden">
-            <div class="flex flex-wrap justify-center items-center gap-16 opacity-40 grayscale hover:grayscale-0 transition-all">
-                <span class="font-display-lg text-3xl font-extrabold text-on-background">ZAIN</span>
-                <span class="font-display-lg text-3xl font-extrabold text-on-background">ASIACELL</span>
-                <span class="font-display-lg text-3xl font-extrabold text-on-background">QI CARD</span>
-                <span class="font-display-lg text-3xl font-extrabold text-on-background">MISWAK</span>
-                <span class="font-display-lg text-3xl font-extrabold text-on-background">Baly</span>
-            </div>
-        </section>
-
-        <!-- Contact Form -->
-        <section class="max-w-4xl mx-auto px-6 mb-32" id="contact">
-            <div class="glass-card rounded-[2rem] p-8 md:p-12">
-                <div class="text-center mb-12">
-                    <h2 class="font-headline-md text-headline-md text-on-background mb-4">دعنا نتحدث</h2>
-                    <p class="text-on-surface-variant">هل لديك مشروع في ذهنك؟ أنا هنا لمساعدتك في تحقيقه.</p>
-                </div>
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="block text-sm font-code-label text-on-background pr-2">الاسم الكامل</label>
-                            <input class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-on-background" placeholder="سميرة علي" type="text">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block text-sm font-code-label text-on-background pr-2">البريد الإلكتروني</label>
-                            <input class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-on-background" placeholder="samira@example.com" type="email">
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="block text-sm font-code-label text-on-background pr-2">الموضوع</label>
-                        <input class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-on-background" placeholder="استشارة تقنية" type="text">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="block text-sm font-code-label text-on-background pr-2">الرسالة</label>
-                        <textarea class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-on-background" placeholder="اكتب رسالتك هنا..." rows="5"></textarea>
-                    </div>
-                    <button class="w-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-bold py-4 rounded-xl soft-tech-glow flex items-center justify-center gap-2">
-                        إرسال الرسالة
-                        <span class="material-symbols-outlined">send</span>
-                    </button>
-                </form>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-rose-900/20 w-full mt-auto">
-        <div class="flex flex-col md:flex-row-reverse justify-between items-center px-8 py-12 gap-6 w-full max-w-7xl mx-auto">
-            <div class="flex gap-6">
-                <a class="text-slate-600 hover:text-rose-500 transition-colors" href="#">LinkedIn</a>
-                <a class="text-slate-600 hover:text-rose-500 transition-colors" href="#">GitHub</a>
-                <a class="text-slate-600 hover:text-rose-500 transition-colors" href="#">Twitter</a>
-            </div>
-            <div class="font-sans text-xs text-slate-500">
-                © ٢٠٢٤ سميرة. جميع الحقوق محفوظة. صُنع بشغف.
-            </div>
-        </div>
+    <footer class="py-16 text-center">
+        <div class="text-sm font-black text-primary tracking-[0.2em] uppercase mb-4">سميرة &copy; ٢٠٢٦</div>
+        <div class="text-xs text-on-background/30 italic">صُمم بكل حب ليناسب ذوقكِ الرفيع</div>
     </footer>
+
 </body>
 </html>
